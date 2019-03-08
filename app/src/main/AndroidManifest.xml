@@ -16,6 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ControlActivity" />
+        <activity android:name=".LookActivity" />
+        <activity android:name=".DiscoverActivity" />
+        <activity android:name=".LetDiscoverActivity"></activity>
     </application>
 
 </manifest>
