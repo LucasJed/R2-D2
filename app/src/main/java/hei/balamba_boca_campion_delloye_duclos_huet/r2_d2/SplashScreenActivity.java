@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 public class SplashScreenActivity extends AppCompatActivity {
 
     /** Duration of wait **/
-    private final int SPLASH_DISPLAY_LENGTH = 6500; //splash screen will be shown for 2 seconds
+    private final int SPLASH_DISPLAY_LENGTH = 6500; //splash screen will be shown for 6 seconds
 
     /** Called when the activity is first created. */
     @Override
