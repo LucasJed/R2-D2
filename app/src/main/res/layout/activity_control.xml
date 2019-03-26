@@ -54,7 +54,8 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/joystickView"
         android:layout_centerHorizontal="true"
-        android:text="Connexion !" />
+        android:text="Connexion !"
+        android:onClick="onClick11"/>
 
 
 </RelativeLayout>
