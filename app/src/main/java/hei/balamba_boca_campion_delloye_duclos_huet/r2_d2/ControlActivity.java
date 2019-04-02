@@ -86,38 +86,43 @@ public class ControlActivity extends AppCompatActivity {
         Log.d("R2-D2", String.format("executeSSHcommand launch"));
         String user = "pi";
         String password = "raspberry";
-        String host = "10.127.0.118";
+        String host = "10.127.0.119";
         int port=22;
 
         Log.d("R2-D2", String.format("before try"));
         try{
-
             Log.d("R2-D2", String.format("try is ok"));
             JSch jsch = new JSch();
+
             Log.d("R2-D2", String.format("Before session"));
             Session session = jsch.getSession(user, host, port);
+
             Log.d("R2-D2", String.format("Before password"));
             session.setPassword(password);
             Log.d("R2-D2", String.format("After password"));
+
             session.setConfig("StrictHostKeyChecking", "no");
             session.setTimeout(10000);
+
             Log.d("R2-D2", String.format("Before session connected"));
             session.connect();
             Log.d("R2-D2", String.format("session connected"));
+
             ChannelExec channel = (ChannelExec)session.openChannel("exec");
-            channel.setCommand("cd ~/AlphaBot2/python");
-            Log.d("R2-D2", String.format("cd ~/AlphaBot2/python"));
-            channel.setCommand("python Joystick.py");
-            Log.d("R2-D2", String.format("python Joystick.py"));
+            channel.setCommand("python ~/AlphaBot2/python/Joystick.py");
+            Log.d("R2-D2", String.format("cd ~/AlphaBot2/python/Joystick.py"));
+
+
             channel.connect();
             Log.d("R2-D2", String.format("connected"));
             try{Thread.sleep(10000);}catch(Exception ee){}
             channel.disconnect();
+
             Log.d("R2-D2", String.format("disconnected"));
 
         }
         catch(JSchException e){
-
+            System.out.println(e);
         }
     }
 }

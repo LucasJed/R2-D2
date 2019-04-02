@@ -10,6 +10,7 @@
     >
 
     <TextView
+        android:id="@+id/Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/textView_angle_left"
@@ -56,6 +57,7 @@
         android:layout_centerHorizontal="true"
         android:text="Connexion !"
         android:onClick="onClick11"/>
+
 
 
 </RelativeLayout>
