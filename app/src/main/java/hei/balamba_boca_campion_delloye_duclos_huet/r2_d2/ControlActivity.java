@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 import android.widget.TextView;
 
 import com.jcraft.jsch.ChannelExec;
@@ -21,7 +23,7 @@ public class ControlActivity extends AppCompatActivity {
 
     private TextView mTextViewAngleLeft;
     private TextView mTextViewStrengthLeft;
-
+    private WebView  mWebView;
     private TextView mTextViewAngleRight;
     private TextView mTextViewStrengthRight;
     private TextView mTextViewCoordinateRight;
@@ -65,6 +67,13 @@ public class ControlActivity extends AppCompatActivity {
                 }
             }
         });
+
+        mWebView = (WebView) findViewById(R.id.camera_view);
+        mWebView.loadUrl("http://10.127.0.119:8080/stream_simple.html");
+        mWebView.getSettings().setLoadWithOverviewMode(true);
+        mWebView.getSettings().setUseWideViewPort(true);
+        mWebView.setInitialScale(90);
+
 
     }
     public void onClick11 (View view) {

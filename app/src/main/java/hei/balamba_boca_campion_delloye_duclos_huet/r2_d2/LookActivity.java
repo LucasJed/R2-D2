@@ -1,39 +1,66 @@
 package hei.balamba_boca_campion_delloye_duclos_huet.r2_d2;
 
+import android.net.Uri;
+import android.os.AsyncTask;
+import android.se.omapi.Session;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.webkit.WebView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.MediaController;
+import android.widget.Toast;
+import android.widget.VideoView;
 
 public class LookActivity extends AppCompatActivity {
 
-/*
+    EditText addrField;
+    Button btnConnect;
+    VideoView streamView;
+    MediaController mediaController;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_look);
+        setContentView(R.layout.activity_main);
 
-        WebView webview = new WebView(this);
-        setContentView(webview);
-        webview.loadUrl("10.127.0.119");
+        addrField = (EditText)findViewById(R.id.addr);
+        btnConnect = (Button)findViewById(R.id.connect);
+        streamView = (VideoView)findViewById(R.id.streamview);
 
-        Log.i(TAG, "Entering onCreate");
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.webview);
+        btnConnect.setOnClickListener(new View.OnClickListener(){
 
-        mWebView = (WebView) findViewById(R.id.webview);
-        mWebView.clearCache(true);
-        mWebView.getSettings().setJavaScriptEnabled(true);
-        mWebView.loadUrl("http://10.0.2.2:8080/SampleWebServer/Welcome.html");
-        Log.i(TAG, "Exiting onCreate");
+            @Override
+            public void onClick(View v) {
+                String s = addrField.getEditableText().toString();
+                playStream(s);
+            }});
 
     }
 
-        mWebView.getSettings().setJavaScriptEnabled(true);
+    private void playStream(String src){
+        Uri UriSrc = Uri.parse(src);
+        if(UriSrc == null){
+            Toast.makeText(LookActivity.this,
+                    "UriSrc == null", Toast.LENGTH_LONG).show();
+        }else{
+            streamView.setVideoURI(UriSrc);
+            mediaController = new MediaController(this);
+            streamView.setMediaController(mediaController);
+            streamView.start();
 
-
-
+            Toast.makeText(LookActivity.this,
+                    "Connect: " + src,
+                    Toast.LENGTH_LONG).show();
+        }
     }
-*/
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        streamView.stopPlayback();
+    }
 
 }
