@@ -4,10 +4,12 @@ package hei.balamba_boca_campion_delloye_duclos_huet.r2_d2;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
 import android.os.AsyncTask;
+import android.util.Log;
 import android.widget.TextView;
 
 public class Client extends AsyncTask<Void, Void, String> {
@@ -30,13 +32,15 @@ public class Client extends AsyncTask<Void, Void, String> {
 
         try {
             socket = new Socket(dstAddress, dstPort);
-
+            socket.setKeepAlive(true);
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream(
                     1024);
             byte[] buffer = new byte[1024];
 
             int bytesRead;
             InputStream inputStream = socket.getInputStream();
+            OutputStream outputStream = socket.getOutputStream();
+
 
             /*
              * notice: inputStream.read() will block if no data return
@@ -44,6 +48,9 @@ public class Client extends AsyncTask<Void, Void, String> {
             while ((bytesRead = inputStream.read(buffer)) != -1) {
                 byteArrayOutputStream.write(buffer, 0, bytesRead);
                 response += byteArrayOutputStream.toString("UTF-8");
+
+                Log.d("R2-D2", String.format("input stream"+response));
+
             }
 
         } catch (UnknownHostException e) {
