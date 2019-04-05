@@ -23,6 +23,8 @@ public class Client extends AsyncTask<Void, Void, String> {
     int dstPort;
     String response = "";
     TextView textResponse;
+    OutputStreamWriter osw;
+    String str = "Hello World";
 
     Client(String addr, int port, TextView textResponse) {
         dstAddress = addr;
@@ -62,6 +64,9 @@ public class Client extends AsyncTask<Void, Void, String> {
                 Log.d("R2-D2", String.format("3.2"));
                 response += byteArrayOutputStream.toString("UTF-8");
                 Log.d("R2-D2", String.format("3.3"));
+
+                osw =new OutputStreamWriter(socket.getOutputStream(), "UTF-8");
+                osw.write(str, 0, str.length());
 
                 Log.d("R2-D2", String.format("input stream"+response));
 
