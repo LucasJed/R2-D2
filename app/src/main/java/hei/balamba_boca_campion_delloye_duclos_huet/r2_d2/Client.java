@@ -1,21 +1,17 @@
 package hei.balamba_boca_campion_delloye_duclos_huet.r2_d2;
 
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
-import java.net.Socket;
-import java.net.UnknownHostException;
-
 import android.os.AsyncTask;
 import android.util.Log;
-import android.util.Log;
-import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
+
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStreamWriter;
+import java.net.Socket;
+import java.net.UnknownHostException;
 
 public class Client extends AsyncTask<Void, Void, String> {
 
@@ -24,7 +20,7 @@ public class Client extends AsyncTask<Void, Void, String> {
     String response = "";
     TextView textResponse;
     OutputStreamWriter osw;
-    String str = "Hello World";
+    String str = "Guillaume suce des bites";
 
     Client(String addr, int port, TextView textResponse) {
         dstAddress = addr;
@@ -63,15 +59,13 @@ public class Client extends AsyncTask<Void, Void, String> {
                 response += byteArrayOutputStream.toString("UTF-8");
                 Log.d("R2-D2", String.format("3.3"));
 
-                osw =new OutputStreamWriter(socket.getOutputStream(), "UTF-8");
+                osw = new OutputStreamWriter(socket.getOutputStream(), "UTF-8");
                 osw.write(str, 0, str.length());
-
-                Log.d("R2-D2", String.format("input stream"+response));
+                osw.flush();
+                Log.d("R2-D2", String.format("input stream" + response));
                 //Log.d("R2-D2", String.format("Yes I'm connected"));
-                dOut.writeBytes("Hello master Raspberry from 118");
-                Log.d("R2-D2", "connexion");
 
-                dOut.flush();
+
                 //Log.d("R2-D2", String.format("input stream" + response));
 
             }
