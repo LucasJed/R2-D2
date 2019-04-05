@@ -44,5 +44,12 @@
         android:id="@+id/responseTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/myButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClick2"
+        android:text="Menu sans connexion" >
+    </Button>
 
 </LinearLayout>
