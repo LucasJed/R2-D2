@@ -10,10 +10,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.net.Socket;
+import java.net.UnknownHostException;
+
+
 public class ClientMain extends Activity {
 
-    TextView response;
     private Button onclick2;
+    private Socket socket;
+    TextView response;
     EditText editTextAddress, editTextPort;
     Button buttonConnect, buttonClear;
 
@@ -40,10 +49,12 @@ public class ClientMain extends Activity {
 
             @Override
             public void onClick(View arg0) {
+                Log.d("R2-D2", String.format("button connect clicked"));
                 Client myClient = new Client(editTextAddress.getText()
                         .toString(), Integer.parseInt(editTextPort
                         .getText().toString()), response);
                 myClient.execute();
+                Log.d("R2-D2", String.format("Client executed"));
             }
         });
 
@@ -51,10 +62,31 @@ public class ClientMain extends Activity {
 
             @Override
             public void onClick(View v) {
-                response.setText("42");
+                response.setText("");
+                Log.d("R2-D2", String.format("text set"));
             }
         });
+
     }
+
+    public void onClick3(View view) {
+        try {
+            EditText et = (EditText) findViewById(R.id.EditText01);
+            String str = et.getText().toString();
+            PrintWriter out = new PrintWriter(new BufferedWriter(
+                    new OutputStreamWriter(socket.getOutputStream())),
+                    true);
+            out.println(str);
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
     public void openMainActivity() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

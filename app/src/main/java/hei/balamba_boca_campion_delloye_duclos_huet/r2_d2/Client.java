@@ -5,11 +5,16 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
 import android.os.AsyncTask;
 import android.util.Log;
+import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class Client extends AsyncTask<Void, Void, String> {
@@ -25,29 +30,38 @@ public class Client extends AsyncTask<Void, Void, String> {
         this.textResponse = textResponse;
     }
 
+
     @Override
     protected String doInBackground(Void... arg0) {
 
         Socket socket = null;
 
         try {
+            Log.d("R2-D2", String.format("try to catch adress and port"));
             socket = new Socket(dstAddress, dstPort);
             socket.setKeepAlive(true);
+            Log.d("R2-D2", String.format("the socket catched address and port"));
+
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream(
                     1024);
             byte[] buffer = new byte[1024];
+            Log.d("R2-D2", String.format("1"));
 
             int bytesRead;
             InputStream inputStream = socket.getInputStream();
             OutputStream outputStream = socket.getOutputStream();
 
+            Log.d("R2-D2", String.format("2"));
 
             /*
              * notice: inputStream.read() will block if no data return
              */
             while ((bytesRead = inputStream.read(buffer)) != -1) {
+                Log.d("R2-D2", String.format("3.1"));
                 byteArrayOutputStream.write(buffer, 0, bytesRead);
+                Log.d("R2-D2", String.format("3.2"));
                 response += byteArrayOutputStream.toString("UTF-8");
+                Log.d("R2-D2", String.format("3.3"));
 
                 Log.d("R2-D2", String.format("input stream"+response));
 
@@ -57,26 +71,35 @@ public class Client extends AsyncTask<Void, Void, String> {
             // TODO Auto-generated catch block
             e.printStackTrace();
             response = "UnknownHostException: " + e.toString();
+            Log.d("R2-D2", String.format("UnknownHostException"));
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
             response = "IOException: " + e.toString();
+            Log.d("R2-D2", String.format("IOException"));
         } finally {
             if (socket != null) {
                 try {
                     socket.close();
+                    Log.d("R2-D2", String.format("socket closed"));
                 } catch (IOException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             }
         }
+        Log.d("R2-D2", String.format("try return response"));
         return response;
+
+
     }
+
 
     @Override
     protected void onPostExecute(String result) {
+        Log.d("R2-D2", String.format("onPost Execute"));
         textResponse.setText(response);
+        Log.d("R2-D2", String.format("tet response set to response"));
         super.onPostExecute(result);
     }
 
