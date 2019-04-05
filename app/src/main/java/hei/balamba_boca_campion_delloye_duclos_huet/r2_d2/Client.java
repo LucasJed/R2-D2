@@ -51,9 +51,7 @@ public class Client extends AsyncTask<Void, Void, String> {
 
             int bytesRead;
             InputStream inputStream = socket.getInputStream();
-            OutputStream outputStream = socket.getOutputStream();
-
-            Log.d("R2-D2", String.format("2"));
+            DataOutputStream dOut = new DataOutputStream(socket.getOutputStream());
 
             /*
              * notice: inputStream.read() will block if no data return
@@ -69,6 +67,12 @@ public class Client extends AsyncTask<Void, Void, String> {
                 osw.write(str, 0, str.length());
 
                 Log.d("R2-D2", String.format("input stream"+response));
+                //Log.d("R2-D2", String.format("Yes I'm connected"));
+                dOut.writeBytes("Hello master Raspberry from 118");
+                Log.d("R2-D2", "connexion");
+
+                dOut.flush();
+                //Log.d("R2-D2", String.format("input stream" + response));
 
             }
 
@@ -102,9 +106,9 @@ public class Client extends AsyncTask<Void, Void, String> {
 
     @Override
     protected void onPostExecute(String result) {
-        Log.d("R2-D2", String.format("onPost Execute"));
-        textResponse.setText(response);
         Log.d("R2-D2", String.format("tet response set to response"));
+
+        textResponse.setText(response);
         super.onPostExecute(result);
     }
 
