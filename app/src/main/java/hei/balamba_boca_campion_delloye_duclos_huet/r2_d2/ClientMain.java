@@ -50,10 +50,10 @@ public class ClientMain extends Activity {
             @Override
             public void onClick(View arg0) {
                 Log.d("R2-D2", String.format("button connect clicked"));
-                Client myClient = new Client(editTextAddress.getText()
+                Singleton.getINSTANCE().client = new Client(editTextAddress.getText()
                         .toString(), Integer.parseInt(editTextPort
                         .getText().toString()), response);
-                myClient.execute();
+                Singleton.getINSTANCE().client.execute();
                 Log.d("R2-D2", String.format("Client executed"));
             }
         });

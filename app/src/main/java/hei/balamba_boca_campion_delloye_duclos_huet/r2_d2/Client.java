@@ -63,11 +63,6 @@ public class Client extends AsyncTask<Void, Void, String> {
                 osw.write(str, 0, str.length());
                 osw.flush();
                 Log.d("R2-D2", String.format("input stream" + response));
-                //Log.d("R2-D2", String.format("Yes I'm connected"));
-
-
-                //Log.d("R2-D2", String.format("input stream" + response));
-
             }
 
         } catch (UnknownHostException e) {
