@@ -9,6 +9,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import java.io.*;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -16,11 +17,12 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.concurrent.TimeUnit;
 
 
 public class ClientMain extends Activity {
 
-    private Button onclick2;
+
     private Socket socket;
     TextView response;
     EditText editTextAddress, editTextPort;
@@ -31,13 +33,8 @@ public class ClientMain extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client_main);
 
-        onclick2 = (Button) findViewById(R.id.myButton1);
-        onclick2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openMainActivity();
-            }
-        });
+
+
 
         editTextAddress = (EditText) findViewById(R.id.addressEditText);
         editTextPort = (EditText) findViewById(R.id.portEditText);
@@ -55,8 +52,15 @@ public class ClientMain extends Activity {
                         .getText().toString()), response);
                 Singleton.getINSTANCE().client.execute();
                 Log.d("R2-D2", String.format("Client executed"));
+                openMainActivity();
+                Log.d("R2-D2", String.format("Main Activity Opened"));
             }
+
+
         });
+
+
+
 
         buttonClear.setOnClickListener(new OnClickListener() {
 
@@ -67,23 +71,6 @@ public class ClientMain extends Activity {
             }
         });
 
-    }
-
-    public void onClick3(View view) {
-        try {
-            EditText et = (EditText) findViewById(R.id.EditText01);
-            String str = et.getText().toString();
-            PrintWriter out = new PrintWriter(new BufferedWriter(
-                    new OutputStreamWriter(socket.getOutputStream())),
-                    true);
-            out.println(str);
-        } catch (UnknownHostException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
 

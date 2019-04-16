@@ -1,7 +1,9 @@
 package hei.balamba_boca_campion_delloye_duclos_huet.r2_d2;
 
 
+import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Handler;
 import android.util.Log;
 import android.widget.TextView;
 
@@ -13,6 +15,8 @@ import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+import static android.provider.AlarmClock.EXTRA_MESSAGE;
+
 public class Client extends AsyncTask<Void, Void, String> {
 
     String dstAddress;
@@ -20,7 +24,7 @@ public class Client extends AsyncTask<Void, Void, String> {
     String response = "";
     TextView textResponse;
     OutputStreamWriter osw;
-    String str = "Guillaume suce des bites";
+    String str = "Are we connected ?";
 
     Client(String addr, int port, TextView textResponse) {
         dstAddress = addr;
@@ -62,7 +66,9 @@ public class Client extends AsyncTask<Void, Void, String> {
                 osw = new OutputStreamWriter(socket.getOutputStream(), "UTF-8");
                 osw.write(str, 0, str.length());
                 osw.flush();
-                Log.d("R2-D2", String.format("input stream" + response));
+                Log.d("R2-D2", String.format("input stream " + response));
+
+
             }
 
         } catch (UnknownHostException e) {
@@ -76,18 +82,11 @@ public class Client extends AsyncTask<Void, Void, String> {
             response = "IOException: " + e.toString();
             Log.d("R2-D2", String.format("IOException"));
         } finally {
-            if (socket != null) {
-                try {
-                    socket.close();
-                    Log.d("R2-D2", String.format("socket closed"));
-                } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            }
         }
         Log.d("R2-D2", String.format("try return response"));
         return response;
+
+
 
 
     }
@@ -100,6 +99,7 @@ public class Client extends AsyncTask<Void, Void, String> {
         textResponse.setText(response);
         super.onPostExecute(result);
     }
+
 
 
 
