@@ -11,8 +11,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
-        android:autoLink="web"
-        android:text="http://androidSRC.net/"
+        android:text="Connection au robot"
         android:textStyle="bold" />
 
     <EditText
@@ -44,26 +43,8 @@
         android:id="@+id/responseTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-    <Button
-        android:id="@+id/myButton2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="onClick3"
-        android:text="Send text" >
-    </Button>
-    <Button
-        android:id="@+id/myButton1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="onClick2"
-        android:text="Menu sans connexion" >
-    </Button>
 
-    <EditText
-        android:id="@+id/EditText01"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="HELLO MOTHER FUCKER" />
+
 
 
 </LinearLayout>

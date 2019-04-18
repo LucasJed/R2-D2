@@ -13,9 +13,9 @@ import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+import static android.provider.AlarmClock.EXTRA_MESSAGE;
+
 public class Client extends AsyncTask<Void, Void, String> {
-
-
 
     String dstAddress;
     int dstPort;
@@ -36,16 +36,17 @@ public class Client extends AsyncTask<Void, Void, String> {
 
         Socket socket = null;
 
-
         try {
             Log.d("R2-D2", String.format("try to catch adress and port"));
             socket = new Socket(dstAddress, dstPort);
             socket.setKeepAlive(true);
             Log.d("R2-D2", String.format("the socket catched address and port"));
+
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream(
                     1024);
             byte[] buffer = new byte[1024];
             Log.d("R2-D2", String.format("1"));
+
             int bytesRead;
             InputStream inputStream = socket.getInputStream();
             DataOutputStream dOut = new DataOutputStream(socket.getOutputStream());
@@ -59,10 +60,13 @@ public class Client extends AsyncTask<Void, Void, String> {
                 Log.d("R2-D2", String.format("3.2"));
                 response += byteArrayOutputStream.toString("UTF-8");
                 Log.d("R2-D2", String.format("3.3"));
+
                 osw = new OutputStreamWriter(socket.getOutputStream(), "UTF-8");
                 osw.write(str, 0, str.length());
                 osw.flush();
-                Log.d("R2-D2", String.format("input stream" + response));
+                Log.d("R2-D2", String.format("input stream " + response));
+
+
             }
 
         } catch (UnknownHostException e) {
@@ -88,7 +92,11 @@ public class Client extends AsyncTask<Void, Void, String> {
         }
         Log.d("R2-D2", String.format("try return response"));
         return response;
+
+
     }
+
+
     @Override
     protected void onPostExecute(String result) {
         Log.d("R2-D2", String.format("tet response set to response"));

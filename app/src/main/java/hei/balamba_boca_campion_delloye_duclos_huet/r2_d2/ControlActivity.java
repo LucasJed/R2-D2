@@ -72,7 +72,7 @@ public class ControlActivity extends AppCompatActivity {
         mWebView.loadUrl("http://10.127.0.119:8080/stream_simple.html");
         mWebView.getSettings().setLoadWithOverviewMode(true);
         mWebView.getSettings().setUseWideViewPort(true);
-        mWebView.setInitialScale(90);
+        mWebView.setInitialScale(130);
 
 
     }
