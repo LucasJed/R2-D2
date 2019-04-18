@@ -14,4 +14,5 @@ public class Singleton {
         return INSTANCE;
     }
 
+
 }
