@@ -17,6 +17,8 @@ import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;
 
+import java.io.OutputStreamWriter;
+
 import io.github.controlwear.virtual.joystick.android.JoystickView;
 
 public class ControlActivity extends AppCompatActivity {
@@ -34,6 +36,7 @@ public class ControlActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_control);
         JoystickView joystick = findViewById(R.id.joystickView);
         joystick.setOnMoveListener(new JoystickView.OnMoveListener() {
