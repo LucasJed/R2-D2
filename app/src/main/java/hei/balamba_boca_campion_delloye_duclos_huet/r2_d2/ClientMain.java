@@ -56,7 +56,6 @@ public class ClientMain extends Activity {
                 Log.d("R2-D2", String.format("Main Activity Opened"));
             }
 
-
         });
 
 
@@ -75,7 +74,7 @@ public class ClientMain extends Activity {
 
 
     public void openMainActivity() {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, ControlActivity.class);
         startActivity(intent);
     }
 }

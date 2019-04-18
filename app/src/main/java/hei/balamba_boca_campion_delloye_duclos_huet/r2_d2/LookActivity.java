@@ -14,6 +14,8 @@ import android.widget.MediaController;
 import android.widget.Toast;
 import android.widget.VideoView;
 
+import java.io.IOException;
+
 public class LookActivity extends AppCompatActivity {
 
     EditText addrField;
@@ -25,6 +27,7 @@ public class LookActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         addrField = (EditText)findViewById(R.id.addr);
         btnConnect = (Button)findViewById(R.id.connect);
         streamView = (VideoView)findViewById(R.id.streamview);
