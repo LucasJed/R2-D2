@@ -34,10 +34,10 @@
         android:layout_column="0"
         android:layout_columnWeight="1"
         android:layout_gravity="center"
-        android:layout_margin="50dp"
-        android:layout_marginLeft="100dp"
-        android:layout_marginRight="100dp"
-        android:text="CONTROL" />
+        android:layout_marginLeft="120sp"
+        android:layout_marginRight="120sp"
+        android:text="CONTROL"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
     <Button
         android:id="@+id/LookBtn"
@@ -48,10 +48,10 @@
         android:layout_column="0"
         android:layout_columnWeight="1"
         android:layout_gravity="center"
-        android:layout_margin="50dp"
-        android:layout_marginLeft="100dp"
-        android:layout_marginRight="100dp"
-        android:text="DRAW" />
+        android:layout_marginLeft="120sp"
+        android:layout_marginRight="120sp"
+        android:text="DRAW"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
     <Button
         android:id="@+id/DiscoverBtn"
@@ -62,10 +62,10 @@
         android:layout_column="0"
         android:layout_columnWeight="1"
         android:layout_gravity="center"
-        android:layout_margin="50dp"
-        android:layout_marginLeft="100dp"
-        android:layout_marginRight="100dp"
-        android:text="DISCOVER" />
+        android:layout_marginLeft="120sp"
+        android:layout_marginRight="120sp"
+        android:text="DISCOVER"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
     <Button
         android:id="@+id/LetDiscoverBtn"
@@ -76,9 +76,9 @@
         android:layout_column="0"
         android:layout_columnWeight="1"
         android:layout_gravity="center"
-        android:layout_margin="50dp"
-        android:layout_marginLeft="100dp"
-        android:layout_marginRight="100dp"
-        android:text="INTELLIGENT DISCOVER" />
+        android:layout_marginLeft="120sp"
+        android:layout_marginRight="120sp"
+        android:text="INTELLIGENT DISCOVER"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
 </GridLayout>
