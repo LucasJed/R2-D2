@@ -47,9 +47,13 @@ public class ClientMain extends Activity {
             @Override
             public void onClick(View arg0) {
                 Log.d("R2-D2", String.format("button connect clicked"));
-                Singleton.getINSTANCE().client = new Client(editTextAddress.getText()
-                        .toString(), Integer.parseInt(editTextPort
-                        .getText().toString()), response);
+                try {
+                    Singleton.getINSTANCE().client = new Client(editTextAddress.getText()
+                            .toString(), Integer.parseInt(editTextPort
+                            .getText().toString()), response);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 Singleton.getINSTANCE().client.execute();
                 Log.d("R2-D2", String.format("Client executed"));
                 openMainActivity();

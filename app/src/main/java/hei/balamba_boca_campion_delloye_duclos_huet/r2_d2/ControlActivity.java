@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,10 +14,13 @@ import android.webkit.WebView;
 import android.widget.TextView;
 
 
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 
 import io.github.controlwear.virtual.joystick.android.JoystickView;
 
-public class ControlActivity extends AppCompatActivity {
+
+public class ControlActivity extends AppCompatActivity  {
 
     private TextView mTextViewAngleLeft;
     private TextView mTextViewStrengthLeft;
@@ -38,20 +42,46 @@ public class ControlActivity extends AppCompatActivity {
             @Override
             public void onMove(int angle, int strength) {
                 // do whatever you want
+                Client client = Singleton.getINSTANCE().client;
+                try {
+                    client.socket.getOutputStream();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
                 //Return in log the command (direction or rotation)
                 if (46 <= angle && angle < 136) {
                     Log.d("R2-D2", String.format("angle : %d force : %d", angle, strength));
                     Log.d("R2-D2", String.format("Forward"));
+                    try {
+                        Client.write("av",Singleton.getINSTANCE().client);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 } else if (136 <= angle && angle < 226) {
                     Log.d("R2-D2", String.format("angle : %d force : %d", angle, strength));
                     Log.d("R2-D2", String.format("Left"));
+                    try {
+                        Client.write("tg",Singleton.getINSTANCE().client);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 } else if (226 <= angle && angle < 315) {
                     Log.d("R2-D2", String.format("angle : %d force : %d", angle, strength));
                     Log.d("R2-D2", String.format("Backward"));
+                    try {
+                        Client.write("rc",Singleton.getINSTANCE().client);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 } else {
                     Log.d("R2-D2", String.format("angle : %d force : %d", angle, strength));
                     Log.d("R2-D2", String.format("Right"));
+                    try {
+                        Client.write("td",Singleton.getINSTANCE().client);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
                 //Return in log the different levels of speed
                 if (0< strength && strength <33) {
@@ -71,6 +101,7 @@ public class ControlActivity extends AppCompatActivity {
         mWebView.getSettings().setLoadWithOverviewMode(true);
         mWebView.getSettings().setUseWideViewPort(true);
         mWebView.setInitialScale(130);
+
 
 
     }
