@@ -12,12 +12,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.TextView;
 
-import com.jcraft.jsch.ChannelExec;
-import com.jcraft.jsch.JSch;
-import com.jcraft.jsch.JSchException;
-import com.jcraft.jsch.Session;
 
-import java.io.OutputStreamWriter;
 
 import io.github.controlwear.virtual.joystick.android.JoystickView;
 
@@ -78,64 +73,6 @@ public class ControlActivity extends AppCompatActivity {
         mWebView.setInitialScale(130);
 
 
-    }
-    public void onClick11 (View view) {
-        Log.d("R2-D2", String.format("OnClick works"));
-        new AsyncTask<Integer, Void, Void>(){
-            @Override
-            protected Void doInBackground(Integer... params) {
-                try {
-                    executeSSHcommand();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                return null;
-            }
-        }.execute(1);
-    }
-
-    public void executeSSHcommand(){
-        Log.d("R2-D2", String.format("executeSSHcommand launch"));
-        String user = "pi";
-        String password = "raspberry";
-        String host = "10.127.0.119";
-        int port=22;
-
-        Log.d("R2-D2", String.format("before try"));
-        try{
-            Log.d("R2-D2", String.format("try is ok"));
-            JSch jsch = new JSch();
-
-            Log.d("R2-D2", String.format("Before session"));
-            Session session = jsch.getSession(user, host, port);
-
-            Log.d("R2-D2", String.format("Before password"));
-            session.setPassword(password);
-            Log.d("R2-D2", String.format("After password"));
-
-            session.setConfig("StrictHostKeyChecking", "no");
-            session.setTimeout(10000);
-
-            Log.d("R2-D2", String.format("Before session connected"));
-            session.connect();
-            Log.d("R2-D2", String.format("session connected"));
-
-            ChannelExec channel = (ChannelExec)session.openChannel("exec");
-            channel.setCommand("python ~/AlphaBot2/python/Joystick.py");
-            Log.d("R2-D2", String.format("cd ~/AlphaBot2/python/Joystick.py"));
-
-
-            channel.connect();
-            Log.d("R2-D2", String.format("connected"));
-            try{Thread.sleep(10000);}catch(Exception ee){}
-            channel.disconnect();
-
-            Log.d("R2-D2", String.format("disconnected"));
-
-        }
-        catch(JSchException e){
-            System.out.println(e);
-        }
     }
 }
 

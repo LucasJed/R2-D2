@@ -3,46 +3,72 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:background="@drawable/background"
+    >
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:text="Connection au robot"
+        android:layout_marginTop="50sp"
+        android:layout_marginBottom="50sp"
+        android:text="CONNECTION TO THE ROBOT"
+        android:textColor="@color/button"
+        android:textSize="16sp"
         android:textStyle="bold" />
 
     <EditText
         android:id="@+id/addressEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Server ip address" />
+        android:layout_marginRight="20sp"
+        android:layout_marginLeft="20sp"
+        android:hint="What's my IP..." />
 
     <EditText
         android:id="@+id/portEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Server port number" />
+        android:layout_marginRight="20sp"
+        android:layout_marginLeft="20sp"
+        android:hint="... and where are you listening to ?" />
 
     <Button
         android:id="@+id/connectButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Connect..." />
+        android:layout_marginLeft="140sp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="140sp"
+        android:text="Connect"
+        android:textColor="@color/colorPrimaryDark"
+        style="@style/Widget.AppCompat.Button"
+        android:drawableLeft="@drawable/ic_rss_feed_black_24dp"
+        />
 
     <Button
         android:id="@+id/clearButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Clear" />
+        android:layout_marginRight="140sp"
+        android:layout_marginLeft="140sp"
+        style="@style/Widget.AppCompat.Button"
+        android:text="Clear"
+        android:textColor="@color/colorPrimaryDark"
+        android:drawableLeft="@drawable/ic_settings_backup_restore_black_24dp"
+        />
 
     <TextView
         android:id="@+id/responseTextView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:alpha="0" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        />
 
 
 
