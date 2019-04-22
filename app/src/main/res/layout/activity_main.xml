@@ -10,23 +10,9 @@
     tools:context=".MainActivity">
 
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Choose your weapon"
-        android:textAlignment="center"
-        android:layout_gravity="center"
-        android:layout_row="0"
-        android:layout_column="0"
-        android:textColor="#ffffff"
-        android:textSize="23dp"
-        android:typeface="monospace"
-        android:layout_rowWeight="1"
-        android:layout_columnWeight="1"/>
-
     <Button
         android:id="@+id/ControlBtn"
+        style="@style/Widget.AppCompat.Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_row="1"
@@ -36,8 +22,11 @@
         android:layout_gravity="center"
         android:layout_marginLeft="120sp"
         android:layout_marginRight="120sp"
+        android:drawableLeft="@drawable/ic_videogame_asset_black_24dp"
         android:text="CONTROL"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        android:textColor="@color/colorPrimaryDark" />
+
+
 
     <Button
         android:id="@+id/LookBtn"
@@ -50,8 +39,9 @@
         android:layout_gravity="center"
         android:layout_marginLeft="120sp"
         android:layout_marginRight="120sp"
-        android:text="DRAW"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        android:textColor="@color/colorPrimaryDark"
+        android:drawableLeft="@drawable/ic_create_black_24dp"
+        android:text="DRAW" />
 
     <Button
         android:id="@+id/DiscoverBtn"
@@ -64,8 +54,9 @@
         android:layout_gravity="center"
         android:layout_marginLeft="120sp"
         android:layout_marginRight="120sp"
-        android:text="DISCOVER"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        android:textColor="@color/colorPrimaryDark"
+        android:drawableLeft="@drawable/ic_edit_location_black_24dp"
+        android:text="DISCOVER" />
 
     <Button
         android:id="@+id/LetDiscoverBtn"
@@ -78,7 +69,8 @@
         android:layout_gravity="center"
         android:layout_marginLeft="120sp"
         android:layout_marginRight="120sp"
-        android:text="INTELLIGENT DISCOVER"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        android:textColor="@color/colorPrimaryDark"
+        android:drawableLeft="@drawable/ic_wifi_tethering_black_24dp"
+        android:text="INTELLIGENT DISCOVER" />
 
 </GridLayout>

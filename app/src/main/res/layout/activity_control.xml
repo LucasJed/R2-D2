@@ -5,29 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="hei.balamba_boca_campion_delloye_duclos_huet.r2_d2.ControlActivity"
-    android:padding="16dp"
+    android:padding="30dp"
     android:background="@drawable/background"
     >
 
-    <TextView
-        android:id="@+id/Title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/textView_angle_left"
-        android:layout_centerHorizontal="true"
-        android:gravity="center_vertical"
-        android:text="Welcome to the Remote !"
-        android:typeface="monospace"
-        android:textColor="#ffff"
-        android:textSize="25dp" />
 
     <WebView
         android:id="@+id/camera_view"
         android:layout_width="312dp"
         android:layout_height="220dp"
-        android:layout_above="@+id/button"
-        android:layout_marginStart="25dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="50sp"
+        android:background="#009688"
         android:layout_toEndOf="@+id/textView_angle_left">
 
     </WebView>
@@ -53,21 +42,14 @@
         android:layout_height="278dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40sp"
         custom:JV_backgroundColor="#009688"
         custom:JV_borderColor="#00796B"
         custom:JV_borderWidth="4dp"
-        custom:JV_buttonColor="#FFFF"
+        custom:JV_buttonColor="#5FD3C8"
         custom:JV_buttonSizeRatio="15%"
         custom:JV_fixedCenter="true" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/joystickView"
-        android:layout_centerHorizontal="true"
-        android:text="Connexion !"
-        android:onClick="onClick11"/>
 
 
 
