@@ -78,7 +78,7 @@ public class ClientMain extends Activity {
 
 
     public void openMainActivity() {
-        Intent intent = new Intent(this, ControlActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 }
