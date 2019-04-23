@@ -88,6 +88,11 @@ public class ControlActivity extends AppCompatActivity  {
                     Log.d("R2-D2", String.format("Low"));
                 } else if (strength == 0) {
                     Log.d("R2-D2", String.format("STOP"));
+                    try {
+                        Client.write("ar",Singleton.getINSTANCE().client);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 } else if (33<= strength && strength <66) {
                     Log.d("R2-D2", String.format("Medium"));
                 } else {
